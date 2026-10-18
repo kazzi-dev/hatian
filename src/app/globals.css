@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: #f6f5f1;
+  color: #1c1917;
+}
+
+/* Visible keyboard focus everywhere, never on mouse click */
+:focus-visible {
+  outline: 2px solid #047857;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@utility field {
+  @apply w-full rounded-lg border border-stone-300 bg-white px-3 py-2.5 text-sm outline-none transition placeholder:text-stone-400 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20 aria-invalid:border-red-500;
+}
+@utility btn {
+  @apply inline-flex min-h-10 items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium whitespace-nowrap transition active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn bg-emerald-700 text-white shadow-sm hover:bg-emerald-800;
+}
+@utility btn-ghost {
+  @apply btn border border-stone-300 bg-white text-stone-700 hover:bg-stone-100;
+}
+@utility card {
+  @apply rounded-2xl border border-stone-200 bg-white p-5 shadow-sm;
+}
+@utility label {
+  @apply mb-1.5 block text-xs font-medium uppercase tracking-wide text-stone-500;
+}
+/* Money: proportional font but fixed-width digits so columns line up */
+@utility money {
+  @apply font-semibold tabular-nums tracking-tight;
+}
+@utility chip {
+  @apply inline-flex min-h-10 items-center gap-2 rounded-full border border-stone-300 bg-white py-1 pr-3.5 pl-1 text-sm font-medium text-stone-700 transition hover:border-stone-400 aria-pressed:border-emerald-700 aria-pressed:bg-emerald-50 aria-pressed:text-emerald-900 aria-checked:border-emerald-700 aria-checked:bg-emerald-50 aria-checked:text-emerald-900;
+}
